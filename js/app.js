@@ -28,10 +28,12 @@ console.log(`Answer 2: ${JSON.stringify(inventorNameObjects)}`);
 
 // Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest
-
+inventors.sort((a, b) => a.year - b.year);
+console.log(`Answer 3: ${JSON.stringify(inventors)}`);
 
 // 4. Sort the inventors by years lived from shortest to longest-lived
-
+inventors.sort((a, b) => (b.passed - b.year) - (a.passed - a.year));
+console.log(`Answer 4: ${JSON.stringify(inventors)}`);
 
 // Array.prototype.reduce()
 // 5. How many years did all the inventors live?
@@ -84,7 +86,10 @@ const data = [
 // Array.prototype.reduce()
 // 7. Count the number of instances for each of the data items.
 // Hint:  Return an object where the keys are 'car', 'truck', etc. and the values are the count.
-
+const instances = data.reduce(function(result, item) {
+  
+});
+// console.log(`Answer 7: ${JSON.stringify(instances)}`);
 
 
 const devs = [
@@ -101,7 +106,8 @@ console.log(`Answer 8: ${checkAge}`);
 
 // Array.prototype.every()
 // 9. Check if everyone is 19 or older?
-
+const allMinAge = devs.every((item) => 2020 - item.year >= 19);
+console.log(`Answer 9: ${allMinAge}`);
 
 
 const comments = [
@@ -114,7 +120,8 @@ const comments = [
 
 // Array.prototype.find()
 // 10. Find the comment with the id of 823423
-
+const comment = comments.find((item) => item.id === 823423);
+console.log(`Answer 10: ${JSON.stringify(comment)}`);
 
 // Array.prototype.findIndex()
 // 11. Find the index of the comment with an id of 123523
