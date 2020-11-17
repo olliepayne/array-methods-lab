@@ -16,24 +16,27 @@ const inventors = [
 
 // Array.prototype.filter()
 // 1. Filter the array of inventors into a new array containing only the inventors born in the 1500's
-const inventors1500 = inventors.filter(val => val.year < 1600 && val.year >= 1500);
+const inventors1500 = inventors.filter((item) => item.year >= 1500 && item.year < 1600);
+console.log(`Answer 1: ${JSON.stringify(inventors1500)}`);
 
 // Array.prototype.map()
 // 2. Map the array of the inventors into a new array containing objects with just the first and last names as properties
-const inventorsNames = inventors.map();
+const inventorNameObjects = inventors.map(function(item) {
+  return {'first': item.first, 'second': item.last};
+});
+console.log(`Answer 2: ${JSON.stringify(inventorNameObjects)}`);
 
 // Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest
 
 
-
 // 4. Sort the inventors by years lived from shortest to longest-lived
-
 
 
 // Array.prototype.reduce()
 // 5. How many years did all the inventors live?
-
+const totalYearsLived = inventors.reduce((result, item) => result + (item.passed - item.year), 0);
+console.log(`Answer 5: ${totalYearsLived}`);
 
 
 const people = [
@@ -52,7 +55,25 @@ const people = [
 
 // Array.prototype.map()
 // 6. Map the people array such that the new array consists of strings with the names formatted as "First Last", e.g., "Becker, Carl" should be mapped to "Carl Becker".
+const peopleNames = people.map(function(item) {
+  let firstName = '';
+  let lastName = '';
+  let lastNameFound = false;
+  for(let i = 0; i < item.length; i++) {
+    if(!lastNameFound) {
+      if(item[i] === ',') {
+        lastNameFound = true;
+      } else {
+        lastName += item[i];
+      }
+    } else {
+      firstName += item[i];
+    }
+  }
 
+  return `${firstName} ${lastName}`;
+}); 
+console.log(`Answer 6: ${peopleNames}`);
 
 
 const data = [
@@ -75,8 +96,8 @@ const devs = [
 
 // Array.prototype.some()
 // 8. Check if at least one person is 19 or older?
-
-
+const checkAge = devs.some((item) => 2020 - item.year >= 19);
+console.log(`Answer 8: ${checkAge}`);
 
 // Array.prototype.every()
 // 9. Check if everyone is 19 or older?
@@ -95,6 +116,7 @@ const comments = [
 // 10. Find the comment with the id of 823423
 
 
-
 // Array.prototype.findIndex()
 // 11. Find the index of the comment with an id of 123523
+const index = comments.findIndex((item) => item.id === 123523);
+console.log(`Answer 11: ${index}`);
