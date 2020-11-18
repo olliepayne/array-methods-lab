@@ -87,9 +87,21 @@ const data = [
 // 7. Count the number of instances for each of the data items.
 // Hint:  Return an object where the keys are 'car', 'truck', etc. and the values are the count.
 const instances = data.reduce(function(result, item) {
-  
-});
-// console.log(`Answer 7: ${JSON.stringify(instances)}`);
+  if(item === 'car') {
+    result.car++;
+  } else if(item === 'truck') {
+    result.truck++;
+  } else if(item === 'van') {
+    result.van++;
+  } else if(item === 'bike') {
+    result.bike++;
+  } else if(item === 'walk') {
+    result.walk++;
+  }
+
+  return result;
+}, {car: 0, truck: 0, van: 0, bike: 0, walk: 0});
+console.log(`Answer 7: ${JSON.stringify(instances)}`);
 
 
 const devs = [
